@@ -10,8 +10,7 @@
 1.爬取部分个股历史数据并存成本地excel文件   
 ![image](https://github.com/huangym1/Stock_Spider_BI/blob/master/images/stock.png)  
 2.合并多个excel表  
-3.在FineBI创建业务包，并添加合并后的ex
-    cel表  
+3.在FineBI创建业务包，并添加合并后的excel表  
 4.根据业务需求创建仪表板   
 ![image](https://github.com/huangym1/Stock_Spider_BI/blob/master/images/FineBI.png)
 
