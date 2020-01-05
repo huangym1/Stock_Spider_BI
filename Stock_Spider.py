@@ -72,6 +72,7 @@ class StockSpider(object):
         print("数据下载完成...")
         self.mergeData()
 
+
     @staticmethod
     def downLoadData(filename,data):
         filepath = 'data/'+ filename +'.csv'
@@ -79,6 +80,7 @@ class StockSpider(object):
             for row in data:
               f.write(row)
 
+    # 合并多个excel表
     @staticmethod
     def mergeData():
         dir = 'data/'
@@ -95,4 +97,4 @@ class StockSpider(object):
 
 if __name__ == '__main__':
     stock = StockSpider()
-    stock.getStockData('20191101','20191231')
+    stock.getStockData('20191101','20191231') # 需要爬取数据的开始日期，结束日期
