@@ -1,4 +1,4 @@
-# 沪深部分个股爬虫+FineBI分析
+# 沪深个股爬虫+FineBI分析
 ## 项目背景
 了解并掌握FineBI基本操作
 
@@ -7,11 +7,11 @@
 - 使用网易财经网提供的接口爬取个股历史数据
 
 ## 项目步骤
-1.爬取部分个股历史数据并存成本地excel文件
+1.爬取部分个股历史数据并存成本地excel文件  
 ![image](https://github.com/huangym1/Stock_Spider_BI/blob/master/images/stock.png)  
 2.合并多个excel表
 3.在FineBI创建业务包，并添加合并后的excel表
-4.根据业务需求创建仪表板
+4.根据业务需求创建仪表板  
 ![image](https://github.com/huangym1/Stock_Spider_BI/blob/master/images/FineBI.png)
 
 ## TODO
