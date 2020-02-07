@@ -15,5 +15,5 @@
 ![image](https://github.com/huangym1/Stock_Spider_BI/blob/master/images/FineBI.png)
 
 ## TODO
-- 获取全量沪深个股历史数据，并使用FineBI作行情的深入分析
+- 获取全量沪深个股历史数据，并使用FineBI作行情的深入分析  
 ~~- 获取指定基金历史数据，并使用FineBI进行分析~~
