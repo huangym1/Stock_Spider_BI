@@ -45,10 +45,9 @@ class FundSpider(object):
     # 获取基金名字
     @staticmethod
     def getFunName(code):
-        url = "http://fundgz.1234567.com.cn/js/{}.js".format(code)
+        url = "http://fund.eastmoney.com/pingzhongdata/{}.js".format(code)
         response = requests.get(url)
-        res = re.search(r'\((.*)\);',response.text).group(1)
-        name = json.loads(res)['name']
+        name = re.search(r'.*fS_name = "(.*?)";var',response.text).group(1)
         return name
 
     # 获取个基历史净值
@@ -98,6 +97,9 @@ class FundSpider(object):
         print("{0}数据下载完成!!!".format(sheet_name))
 
 if __name__ == '__main__':
-    code_list = ['005911','006649']
+    code_list = ['005911','006476','006649','110022','006479','005918','320007','320010','501010','001593','001156','007301',
+                 '160225','161028','360016','762001','519778','002939','006113','003095','004041','001551','003884',
+                 '100038','001549','007874','006098','377240','004070','001178','005689','050026','161005','001508',
+                 '001510','161017']
     fund = FundSpider()
     fund.getFundData(code_list,'2019-01-01','2020-02-07')
