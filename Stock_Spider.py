@@ -92,7 +92,7 @@ class StockSpider(object):
                 filename_list.append(filepath)
                 dfs.append(pd.read_csv(filepath))
         df = pd.concat(dfs,ignore_index=True)
-        df.to_csv('result.csv',encoding='utf-8')
+        df.to_csv('result_stock.csv',encoding='utf-8')
         print("数据合并成功...")
 
 if __name__ == '__main__':
