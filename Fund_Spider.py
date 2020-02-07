@@ -34,7 +34,7 @@ class FundSpider(object):
         self.ua = random.choice(self.uapools)
         # self.sem = threading.Semaphore(100)
         self.stock_dict = dict() # 存储个股列表
-        pd.DataFrame().to_excel('result_fund.xlsx')  # excel必需已经存在才能追加sheet，因此先建立一个空的sheet
+
 
     # 将xml转化成json
     # def xmltojson(self,xmlstr):
@@ -52,6 +52,7 @@ class FundSpider(object):
 
     # 获取个基历史净值
     def getFundData(self,code_list,stime,etime):
+        pd.DataFrame().to_excel('result_fund.xlsx')  # excel必需已经存在才能追加sheet，因此先建立一个空的sheet
         self.hosts = "fund.eastmoney.com"
         self.headers = {
             'HOST': self.hosts,
@@ -96,10 +97,24 @@ class FundSpider(object):
         excelWriter.close()
         print("{0}数据下载完成!!!".format(sheet_name))
 
+    # 合并多个sheet到一个csv
+    @staticmethod
+    def mergeData(code_list):
+        data = pd.read_excel('result_fund.xlsx',None)
+        data_sheet = list(data.keys())
+        print(data_sheet)
+        df = pd.DataFrame(columns=['净值日期','单位净值','累计净值','日增长率','申购状态','赎回状态','分红送配','基金代码'])
+        for j,i in enumerate(data_sheet):
+            data[i]['基金代码'] = code_list[j]
+            df_temp = data[i]
+            df = pd.concat([df,df_temp])
+        df.to_excel('result_fund_sum.xlsx',index=None)
+
 if __name__ == '__main__':
     code_list = ['005911','006476','006649','110022','006479','005918','320007','320010','501010','001593','001156','007301',
                  '160225','161028','360016','762001','519778','002939','006113','003095','004041','001551','003884',
                  '100038','001549','007874','006098','377240','004070','001178','005689','050026','161005','001508',
                  '001510','161017']
     fund = FundSpider()
-    fund.getFundData(code_list,'2019-01-01','2020-02-07')
+    # fund.getFundData(code_list,'2019-01-01','2020-02-07')
+    fund.mergeData(code_list)
